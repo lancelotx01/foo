@@ -1,0 +1,21 @@
+reverseproxy:
+  image: reverseproxy
+  ports:
+    - "8080:8080"
+  links:
+    - hello
+    - hi
+
+hello:
+  build: apps/hello
+  ports:
+    - "5004:5000"
+  volumes:
+    - ./apps/hello:/app
+
+hi:
+  build: apps/hi
+  ports:
+    - "5005:5000"
+  volumes:
+    - ./apps/hi:/app
